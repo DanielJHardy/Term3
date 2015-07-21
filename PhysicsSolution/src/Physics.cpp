@@ -113,7 +113,7 @@ void Physics::setupTutorial1()
     g_PhysicsScene->addActor(*plane);
    
     //add a box
-    float density = 10;
+    float density = 100;
 
     for (int i = 0; i < ArrayCount(dynamicActors); ++i)
     {
@@ -141,7 +141,7 @@ void Physics::setupPhysx()
     //create physics material  
     g_PhysicsMaterial = g_Physics->createMaterial(0.9f, 0.9f,.1f);
     physx::PxSceneDesc sceneDesc(g_Physics->getTolerancesScale());
-    sceneDesc.gravity = physx::PxVec3(0, -10.0f, 0);
+    sceneDesc.gravity = physx::PxVec3(0, -20.0f, 0);
     sceneDesc.filterShader = &physx::PxDefaultSimulationFilterShader;
     sceneDesc.cpuDispatcher = physx::PxDefaultCpuDispatcherCreate(1);
     g_PhysicsScene = g_Physics->createScene(sceneDesc);
@@ -204,47 +204,8 @@ bool Physics::update()
 
 	if (glfwGetKey(m_window, GLFW_KEY_F) == GLFW_PRESS)
 	{
-		joints[11]->addForce(PxVec3(0, 100, 0), physx::PxForceMode::eACCELERATION);
+		joints[11]->addForce(PxVec3(0, 200, 0), physx::PxForceMode::eACCELERATION);
 	}
-
-	////ragdoll dragging
-	//if (glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)
-	//{
-	//	double *m_x, *m_y;
-	//	glfwGetCursorPos(m_window, m_x, m_y);
-	//
-	//	//normalize cursor position
-	//	float x = (2.0f * (int)m_x) / 1080.0f - 1.0f;
-	//	float y = 1.0f - (2.0f * (int)m_y) / 720.0f;
-	//	float z = 1.0f;
-	//	vec3 ray_nds = vec3(x,y,z);
-	//
-	//	vec4 ray_clip = vec4(ray_nds.xy, -1.0f, 1.0f);
-	//
-	//	vec4 ray_eye = inverse(m_camera.proj) * ray_clip;
-	//	ray_eye = vec4(ray_eye.xy, -1.0f, 0.0f);
-	//
-	//	vec3 ray_wor = (inverse(m_camera.view) * ray_eye).xyz;
-	//	//normalise
-	//
-	//	ray_wor *= vec3(0,0,5);
-	//
-	//
-	//	if (dragging)
-	//	{
-	//
-	//	}
-	//	else
-	//	{
-	//		
-	//	}
-	//}
-
-	
-
-	
-
-
 
 
     Gizmos::clear();
