@@ -254,7 +254,7 @@ bool Physics::update()
             glm::mat4 model_matrix;
             model_matrix = rot * glm::translate(model_matrix, pos);
 
-            Gizmos::addAABB(pos, vec3(2, 2, 2), vec4(1, 1, 1, 1), &rot);
+            Gizmos::addAABBFilled(pos, vec3(2, 2, 2), vec4(0, 1, 0.3f, 1), &rot);
         }
     }
 
